@@ -1,0 +1,7 @@
+
+target/classes/com/perc/qanda/bean/Student.class
+target/classes/application.properties
+target/classes/com/perc/qanda/controller/StuCon.class
+target/classes/com/perc/qanda/mappers/StuMapper.class
+target/classes/com/perc/qanda/QandaApplication.class
+target/test-classes/com/perc/qanda/QandaApplicationTests.class
