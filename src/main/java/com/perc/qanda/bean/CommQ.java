@@ -1,19 +1,19 @@
 package com.perc.qanda.bean;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class CommQ {
 
-    private Integer stu_id;
-    private String stu_name;
-    private String sex;
-    private Integer class_num;
-    private String email;
+    private Integer q_id;
+    private String text;
+    private String answer;
+    private String time;
+    private Integer num;
 
 }

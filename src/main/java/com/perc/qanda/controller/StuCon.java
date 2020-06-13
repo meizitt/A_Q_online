@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StuCon {
 
+    private StuMapper stuMapper;
+
     @Autowired
-    StuMapper stuMapper;
+    public StuCon(StuMapper stuMapper) {
+        this.stuMapper = stuMapper;
+    }
+
 
     @GetMapping("/qa/{id}")
-    public Student getStuById(@PathVariable("id") Integer id){
-        System.out.println(id);
-
-        return stuMapper.findStuById(id);
+    public Student getStuById(@PathVariable("id") Integer id) {
+      return null;
     }
 
 }
