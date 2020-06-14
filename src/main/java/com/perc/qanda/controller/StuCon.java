@@ -20,7 +20,7 @@ public class StuCon {
 
     @GetMapping("/qa/{id}")
     public Student getStuById(@PathVariable("id") Integer id) {
-      return null;
+      return stuMapper.findStuById(id);
     }
 
 }
