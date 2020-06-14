@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 public class CommQ {
 
     private Integer q_id;
+    private Integer num;
     private String text;
     private String answer;
     private String time;
-    private Integer num;
 
 }

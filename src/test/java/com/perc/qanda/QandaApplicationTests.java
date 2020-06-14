@@ -1,14 +1,19 @@
 package com.perc.qanda;
 
+import com.perc.qanda.bean.CommQ;
 import com.perc.qanda.bean.Student;
 import com.perc.qanda.bean.Teacher;
+import com.perc.qanda.mappers.CommQuestionMapper;
 import com.perc.qanda.mappers.StuMapper;
 import com.perc.qanda.mappers.TchMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Timer;
 
 @SpringBootTest
 class QandaApplicationTests {
@@ -19,6 +24,8 @@ class QandaApplicationTests {
     @Autowired
     private TchMapper tchMapper;
 
+    @Autowired
+    CommQuestionMapper commQuestionMapper;
 
     @Test
     void contextLoads() {
@@ -97,7 +104,37 @@ class QandaApplicationTests {
         Teacher tch = tchMapper.findTchById(1);
         tch.setPwd("45gfs");
         System.out.println(tchMapper.updateTchPwd(tch));
+    }
+    
+    @Test
+    void addCommQ(){
+        CommQ commQ = new CommQ();
+        commQ.setText("请回答小炒牛肉的家常做法");
+        commQ.setQ_id(21);
+        commQ.setNum(0);
+        commQ.setTime("2020");
+        commQuestionMapper.addCommQ(commQ);
+        System.out.println(commQ.toString());
+    }
 
+    @Test
+    void findCommQ(){
+        System.out.println(commQuestionMapper.findCommQById(1).toString());
+        System.out.println(commQuestionMapper.findCommQText("方程"));
+        List<CommQ> allCommQ = commQuestionMapper.findCommQText("方程");
+        for (CommQ commQ : allCommQ) {
+            System.out.println(commQ.toString());
+        }
+    }
 
+    @Test
+    void updateCommQ(){
+        CommQ q = commQuestionMapper.findCommQById(2);
+        q.setTime("1919");
+        commQuestionMapper.updateCommQ(q);
+    }
+    @Test
+    void delCommQ(){
+        commQuestionMapper.delCommQById(1);
     }
 }
