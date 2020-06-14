@@ -1,9 +1,11 @@
 package com.perc.qanda;
 
 import com.perc.qanda.bean.CommQ;
+import com.perc.qanda.bean.LabQ;
 import com.perc.qanda.bean.Student;
 import com.perc.qanda.bean.Teacher;
 import com.perc.qanda.mappers.CommQuestionMapper;
+import com.perc.qanda.mappers.LabQuestionMapper;
 import com.perc.qanda.mappers.StuMapper;
 import com.perc.qanda.mappers.TchMapper;
 import org.junit.jupiter.api.Test;
@@ -26,6 +28,9 @@ class QandaApplicationTests {
 
     @Autowired
     CommQuestionMapper commQuestionMapper;
+
+    @Autowired
+    LabQuestionMapper labQuestionMapper;
 
     @Test
     void contextLoads() {
@@ -136,5 +141,44 @@ class QandaApplicationTests {
     @Test
     void delCommQ(){
         commQuestionMapper.delCommQById(1);
+    }
+
+    @Test
+    void addLabQ(){
+        LabQ labQ=new LabQ();
+        labQ.setQ_text("罗尔定理证明不等式");
+        labQuestionMapper.addLabQ(labQ);
+    }
+
+    @Test
+    void delLabQById(){
+        labQuestionMapper.delLabQById(1);
+    }
+
+    @Test
+    void findAllLabQ(){
+        List<LabQ> allLabQ = labQuestionMapper.findAllLabQ();
+        for (LabQ labQ : allLabQ) {
+            System.out.println(labQ.toString());
+        }
+
+    }
+
+    @Test
+    void findLabQByText(){
+        List<LabQ> labQList = labQuestionMapper.findLabQByText("式");
+        for (LabQ labQ : labQList) {
+            System.out.println(labQ.toString());
+
+        }
+    }
+
+    @Test
+    void updateLabQ(){
+        LabQ labQById = labQuestionMapper.findLabQById(1);
+        labQById.setSub_time("2018");
+        labQuestionMapper.updateLabQ(labQById);
+
+
     }
 }
