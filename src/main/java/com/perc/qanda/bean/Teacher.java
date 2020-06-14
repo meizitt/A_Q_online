@@ -20,6 +20,7 @@ public class Teacher {
     private String part_time_teach;
     private String app_time;
     private String phonenum;
+    private String pwd;
 
 
 

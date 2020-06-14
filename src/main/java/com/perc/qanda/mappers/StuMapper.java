@@ -27,4 +27,7 @@ public interface StuMapper {
     @Update("update stu set stu_name=#{stu_name},sex=#{sex},class_num=#{class_num},email=#{email} where stu_id=#{stu_id}")
     int updateStu(Student student);
 
+    @Update("update stu set pwd = #{pwd} where stu_id=#{stu_id}")
+    int updateStuPwd(Student student);
+
 }
