@@ -48,4 +48,14 @@ public class LabQCon {
     public Result updateLabQById(@RequestBody LabQ labQ){
         return labQService.updateLabQ(labQ);
     }
+
+    @PutMapping("/updateTex/{id}/{text}")
+    public Result updateLabQText(@PathVariable Integer id,@PathVariable String text){
+        return labQService.updateLabQText(id,text);
+    }
+
+    @PutMapping("/updateAnswer/{id}/{answer}/{time}")
+    public Result updateLabQAnswer(@PathVariable Integer id,@PathVariable String answer,@PathVariable String time){
+        return labQService.updateAswer(id,answer,time);
+    }
 }

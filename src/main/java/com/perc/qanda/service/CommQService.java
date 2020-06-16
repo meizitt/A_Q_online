@@ -21,7 +21,7 @@ public class CommQService {
 
 
     public List<CommQ> findAllCommQ() {
-       return commQuestionMapper.findAllCommQ();
+        return commQuestionMapper.findAllCommQ();
     }
 
     public CommQ findCommQById(Integer id) {
@@ -29,7 +29,15 @@ public class CommQService {
     }
 
     public List<CommQ> findCommQByText(String text) {
-        return commQuestionMapper.findCommQText(text);
+
+        List<CommQ> commQList = commQuestionMapper.findCommQText(text);
+
+        if(commQList != null){
+            for (CommQ commQ : commQList) {
+                commQ.setNum(commQ.getNum()+1);
+            }
+        }
+        return commQList;
     }
 
     public Result delCommQById(Integer id) {
@@ -62,5 +70,40 @@ public class CommQService {
             res.setRes("failed");
         }
         return res;
+    }
+
+    public Result updateText(Integer id, String text) {
+        CommQ commQ = commQuestionMapper.findCommQById(id);
+        if(commQ != null){
+            commQ.setText(text);
+            int i = commQuestionMapper.updateCommQ(commQ);
+            if (i == 1) {
+                res.setRes("success");
+            } else {
+                res.setRes("failed");
+            }
+            return res;
+
+        }else{
+            res.setRes("failed");
+            return res;
+        }
+    }
+
+    public Result updateAnswer(Integer id, String answer) {
+        CommQ commQ = commQuestionMapper.findCommQById(id);
+        if(commQ != null){
+            commQ.setAnswer(answer);
+            int i = commQuestionMapper.updateCommQ(commQ);
+            if (i == 1) {
+                res.setRes("success");
+            } else {
+                res.setRes("failed");
+            }
+            return res;
+        }else{
+            res.setRes("failed");
+            return res;
+        }
     }
 }

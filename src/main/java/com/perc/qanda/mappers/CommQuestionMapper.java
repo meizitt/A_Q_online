@@ -35,4 +35,6 @@ public interface CommQuestionMapper {
     @Update("update comm_q set num=#{num} where q_id=#{id}")
     int updateCommQNum(Integer id,Integer num);
 
+
+
 }

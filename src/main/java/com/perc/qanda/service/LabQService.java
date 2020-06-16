@@ -19,7 +19,7 @@ public class LabQService {
         this.labQuestionMapper = labQuestionMapper;
     }
 
-    Result res = new Result("msg","res");
+    Result res = new Result("msg", "res");
 
     public List<LabQ> findALl() {
         return labQuestionMapper.findAllLabQ();
@@ -62,5 +62,40 @@ public class LabQService {
             res.setRes("failed");
         }
         return res;
+    }
+
+    public Result updateLabQText(Integer id, String text) {
+        LabQ labQ = labQuestionMapper.findLabQById(id);
+        if (labQ != null) {
+            labQ.setQ_text(text);
+            int i = labQuestionMapper.updateLabQ(labQ);
+            if (i == 1) {
+                res.setRes("success");
+            } else {
+                res.setRes("failed");
+            }
+            return res;
+        } else {
+            res.setRes("failed");
+            return res;
+        }
+    }
+
+    public Result updateAswer(Integer id, String answer, String time) {
+        LabQ labQ = labQuestionMapper.findLabQById(id);
+        if (labQ != null) {
+            labQ.setAnswer_text(answer);
+            labQ.setSub_time(time);
+            int i = labQuestionMapper.updateLabQ(labQ);
+            if (i == 1) {
+                res.setRes("success");
+            } else {
+                res.setRes("failed");
+            }
+            return res;
+        } else {
+            res.setRes("failed");
+            return res;
+        }
     }
 }

@@ -44,8 +44,18 @@ public class CommQuestionCon {
         return commQService.addCommQ(commQ);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result updateCommQ(@RequestBody CommQ commQ){
         return commQService.updateCommQ(commQ);
+    }
+
+    @PutMapping("/updateText/{id}/{text}")
+    public Result updateText(@PathVariable Integer id,@PathVariable String text){
+        return commQService.updateText(id,text);
+    }
+
+    @PutMapping("/updateAnswer/{id}/{answer}")
+    public Result updateAnswer(@PathVariable Integer id,@PathVariable String answer){
+        return commQService.updateAnswer(id,answer);
     }
 }
