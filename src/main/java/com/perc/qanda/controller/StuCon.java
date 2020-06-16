@@ -21,7 +21,7 @@ public class StuCon {
     }
 
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/del/{id}")
     public Result delStuById(@PathVariable("id") Integer id) {
 
         return stuService.delStuById(id);

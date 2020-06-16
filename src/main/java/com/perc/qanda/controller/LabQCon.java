@@ -34,7 +34,7 @@ public class LabQCon {
         return labQService.findByText(text);
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/del/{id}")
     public Result delLabQById(@PathVariable Integer id){
         return labQService.delLabQById(id);
     }
@@ -49,13 +49,13 @@ public class LabQCon {
         return labQService.updateLabQ(labQ);
     }
 
-    @PutMapping("/updateTex/{id}/{text}")
+    @PostMapping("/updateTex/{id}/{text}")
     public Result updateLabQText(@PathVariable Integer id,@PathVariable String text){
         return labQService.updateLabQText(id,text);
     }
 
-    @PutMapping("/updateAnswer/{id}/{answer}/{time}")
+    @PostMapping("/updateAnswer/{id}/{answer}/{time}")
     public Result updateLabQAnswer(@PathVariable Integer id,@PathVariable String answer,@PathVariable String time){
-        return labQService.updateAswer(id,answer,time);
+        return labQService.updateAnswer(id,answer,time);
     }
 }

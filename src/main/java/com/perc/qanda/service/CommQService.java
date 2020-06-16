@@ -82,12 +82,11 @@ public class CommQService {
             } else {
                 res.setRes("failed");
             }
-            return res;
 
         }else{
             res.setRes("failed");
-            return res;
         }
+        return res;
     }
 
     public Result updateAnswer(Integer id, String answer) {
@@ -100,10 +99,9 @@ public class CommQService {
             } else {
                 res.setRes("failed");
             }
-            return res;
         }else{
             res.setRes("failed");
-            return res;
         }
+        return res;
     }
 }

@@ -74,14 +74,13 @@ public class LabQService {
             } else {
                 res.setRes("failed");
             }
-            return res;
         } else {
             res.setRes("failed");
-            return res;
         }
+        return res;
     }
 
-    public Result updateAswer(Integer id, String answer, String time) {
+    public Result updateAnswer(Integer id, String answer, String time) {
         LabQ labQ = labQuestionMapper.findLabQById(id);
         if (labQ != null) {
             labQ.setAnswer_text(answer);
@@ -92,10 +91,9 @@ public class LabQService {
             } else {
                 res.setRes("failed");
             }
-            return res;
         } else {
             res.setRes("failed");
-            return res;
         }
+        return res;
     }
 }

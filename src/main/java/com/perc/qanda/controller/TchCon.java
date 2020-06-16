@@ -31,7 +31,7 @@ public class TchCon {
         return tchService.findTchById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/del/{id}")
     public Result delTchById(@PathVariable Integer id){
         return tchService.delTchById(id);
     }
