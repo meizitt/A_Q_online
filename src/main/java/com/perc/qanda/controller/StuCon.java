@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/stu")
@@ -29,28 +30,28 @@ public class StuCon {
 
 
     @GetMapping("/findAll")
-    public List<Student> findAllStu(){
+    public List<Student> findAllStu() {
         return stuService.findAllStu();
     }
 
     @GetMapping("/{id}")
-    public Student findStuById(@PathVariable Integer id){
+    public Student findStuById(@PathVariable Integer id) {
         return stuService.findStuById(id);
     }
 
     @PostMapping("/add")
-    public Result addStu(@RequestBody Student student){
+    public Result addStu(@RequestBody Student student) {
         return stuService.addStu(student);
     }
 
     @PostMapping("/update")
-    public Result updateStu(@RequestBody Student student){
+    public Result updateStu(@RequestBody Student student) {
         return stuService.updateStu(student);
     }
 
-    @PostMapping("/updateStuPwd/{id}/{pwd}")
-    public Result updateStuPwd(@PathVariable Integer id,@PathVariable String pwd){
-        return stuService.updateStuPwd(id,pwd);
+    @PostMapping("/updatePwd")
+    public Result updateStuPwd(@RequestBody Student stu) {
+        return stuService.updateStuPwd(stu.getStu_id(), stu.getPwd());
     }
 
 }
