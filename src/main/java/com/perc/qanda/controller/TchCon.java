@@ -36,12 +36,12 @@ public class TchCon {
         return tchService.delTchById(id);
     }
 
-    @PostMapping("/addTch")
+    @PostMapping("/add")
     public Result addTch(@RequestBody Teacher teacher){
         return tchService.addTch(teacher);
     }
 
-    @PostMapping("/updateTch")
+    @PostMapping("/update")
     public Result updateTch(@RequestBody Teacher teacher){
         return tchService.updateTch(teacher);
     }

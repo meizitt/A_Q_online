@@ -32,4 +32,7 @@ public interface CommQuestionMapper {
             "where q_id=#{q_id}")
     int updateCommQ(CommQ commQ);
 
+    @Update("update comm_q set num=#{num} where q_id=#{id}")
+    int updateCommQNum(Integer id,Integer num);
+
 }

@@ -181,4 +181,10 @@ class QandaApplicationTests {
         labQuestionMapper.updateLabQ(labQById);
     }
 
+    @Test
+    void updateNum(){
+
+        commQuestionMapper.updateCommQNum(2,1);
+
+    }
 }

@@ -1,0 +1,86 @@
+###
+###  stu
+###
+DELETE http://localhost/stu/{{id}}
+
+###
+GET http://localhost/stu/findAll
+
+###
+GET http://localhost/stu/{{id}}
+
+###
+POST http://localhost/stu/add
+
+###
+POST http://localhost/stu/update
+
+###
+POST http://localhost/stu/updateStuPwd/{{id}}/{{pwd}}
+
+###
+###  tch
+###
+
+###
+GET http://localhost/tch/findAll
+
+###
+GET http://localhost/tch/{{id}}
+
+###
+DELETE http://localhost/tch/{{id}}
+
+###
+POST http://localhost/tch/add
+
+###
+POST http://localhost/tch/update
+
+###
+POST http://localhost/tch/updateTchPwd/{{id}}/{{pwd}}
+
+###
+###  commq
+###
+
+###
+GET http://localhost/commq/findAll
+
+###
+GET http://localhost/commq/{{id}}
+
+###
+GET http://localhost/commq/findByText/{{text}}
+
+###
+DELETE http://localhost/commq/{{id}}
+
+###
+POST http://localhost/commq/add
+
+###
+POST http://localhost/commq/update
+
+
+###
+###  labq
+###
+
+###
+GET http://localhost/labq/findAll
+
+###
+GET http://localhost/labq/{{id}}
+
+###
+GET http://localhost/labq/findByText/{{text}}
+
+###
+DELETE http://localhost/labq/{{id}}
+
+###
+POST http://localhost/labq/add
+
+###
+POST http://localhost/labq/update

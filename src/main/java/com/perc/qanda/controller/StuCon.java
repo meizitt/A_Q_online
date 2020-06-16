@@ -38,12 +38,12 @@ public class StuCon {
         return stuService.findStuById(id);
     }
 
-    @PostMapping("/addStu")
+    @PostMapping("/add")
     public Result addStu(@RequestBody Student student){
         return stuService.addStu(student);
     }
 
-    @PostMapping("/updateStu")
+    @PostMapping("/update")
     public Result updateStu(@RequestBody Student student){
         return stuService.updateStu(student);
     }
