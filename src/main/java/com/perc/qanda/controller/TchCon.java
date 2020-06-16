@@ -46,9 +46,9 @@ public class TchCon {
         return tchService.updateTch(teacher);
     }
 
-    @PostMapping("/updateTchPwd/{id}/{pwd}")
-    public Result updateTchPwd(@PathVariable Integer id,@PathVariable String pwd){
-        return tchService.updateTchPwd(id,pwd);
+    @PostMapping("/updatePwd")
+    public Result updateTchPwd(@RequestBody Teacher tch){
+        return tchService.updateTchPwd(tch.getTch_id(),tch.getPwd());
     }
 
 }

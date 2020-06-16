@@ -1,0 +1,39 @@
+###
+     stu
+###
+GET http://localhost/stu/del/{{id}}
+
+###
+GET http://localhost/stu/findAll
+
+###
+GET http://localhost/stu/{{id}}
+
+###
+POST http://localhost/stu/add
+
+###
+POST http://localhost/stu/update
+
+###
+POST http://localhost/stu/updatePwd
+
+###
+###   tch
+###
+GET http://localhost/tch/findAll
+
+###
+GET http://localhost/tch/{{id}}
+
+###
+GET http://localhost/tch/del/{{id}}
+
+###
+POST http://localhost/tch/add
+
+###
+POST http://localhost/tch/update
+
+###
+POST http://localhost/tch/updateTchPwd
