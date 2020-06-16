@@ -18,7 +18,7 @@ public interface StuMapper {
     @Select("select * from stu")
     List<Student> findAllStu();
 
-    @Insert("insert into stu(stu_id,stu_name,sex,class_num,email) values(#{stu_id},#{stu_name},#{sex},#{class_num},#{email})")
+    @Insert("insert into stu(stu_id,stu_name,sex,class_num,email,pwd) values(#{stu_id},#{stu_name},#{sex},#{class_num},#{email},#{pwd})")
     int addStu(Student student);
 
     @Delete("delete from stu where stu_id=#{id}")

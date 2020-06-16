@@ -18,8 +18,8 @@ public interface TchMapper {
     List<Teacher> findAllTch();
 
     @Insert("insert into " +
-            "tch(tch_id,tch_name,sex,bir,title,major,part_time_teach,app_time,phonenum) " +
-            "values(#{tch_id},#{tch_name},#{sex},#{bir},#{title},#{major},#{part_time_teach},#{app_time},#{phonenum})")
+            "tch(tch_id,tch_name,sex,bir,title,major,part_time_teach,app_time,phonenum,pwd) " +
+            "values(#{tch_id},#{tch_name},#{sex},#{bir},#{title},#{major},#{part_time_teach},#{app_time},#{phonenum},#{pwd})")
     int addTch(Teacher teacher);
 
     @Delete("delete from tch where tch_id=#{id}")

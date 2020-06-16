@@ -1,26 +1,56 @@
 package com.perc.qanda.controller;
 
+import com.perc.qanda.bean.Result;
 import com.perc.qanda.bean.Student;
-import com.perc.qanda.mappers.StuMapper;
+import com.perc.qanda.service.StuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/stu")
+@ResponseBody
 public class StuCon {
 
-    private StuMapper stuMapper;
+    StuService stuService;
 
     @Autowired
-    public StuCon(StuMapper stuMapper) {
-        this.stuMapper = stuMapper;
+    public void setStuService(StuService stuService) {
+        this.stuService = stuService;
     }
 
 
-    @GetMapping("/qa/{id}")
-    public Student getStuById(@PathVariable("id") Integer id) {
-      return stuMapper.findStuById(id);
+    @DeleteMapping("/{id}")
+    public Result delStuById(@PathVariable("id") Integer id) {
+
+        return stuService.delStuById(id);
+    }
+
+
+    @GetMapping("/findAll")
+    public List<Student> findAllStu(){
+        return stuService.findAllStu();
+    }
+
+    @GetMapping("/{id}")
+    public Student findStuById(@PathVariable Integer id){
+        return stuService.findStuById(id);
+    }
+
+    @PostMapping("/addStu")
+    public Result addStu(@RequestBody Student student){
+        return stuService.addStu(student);
+    }
+
+    @PostMapping("/updateStu")
+    public Result updateStu(@RequestBody Student student){
+        return stuService.updateStu(student);
+    }
+
+    @PostMapping("/updateStuPwd/{id}/{pwd}")
+    public Result updateStuPwd(@PathVariable Integer id,@PathVariable String pwd){
+        return stuService.updateStuPwd(id,pwd);
     }
 
 }

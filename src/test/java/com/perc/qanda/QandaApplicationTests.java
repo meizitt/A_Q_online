@@ -1,13 +1,11 @@
 package com.perc.qanda;
 
-import com.perc.qanda.bean.CommQ;
-import com.perc.qanda.bean.LabQ;
-import com.perc.qanda.bean.Student;
-import com.perc.qanda.bean.Teacher;
+import com.perc.qanda.bean.*;
 import com.perc.qanda.mappers.CommQuestionMapper;
 import com.perc.qanda.mappers.LabQuestionMapper;
 import com.perc.qanda.mappers.StuMapper;
 import com.perc.qanda.mappers.TchMapper;
+import com.perc.qanda.service.StuService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +29,9 @@ class QandaApplicationTests {
 
     @Autowired
     LabQuestionMapper labQuestionMapper;
+
+    @Autowired
+    StuService stuService;
 
     @Test
     void contextLoads() {
@@ -110,7 +111,7 @@ class QandaApplicationTests {
         tch.setPwd("45gfs");
         System.out.println(tchMapper.updateTchPwd(tch));
     }
-    
+
     @Test
     void addCommQ(){
         CommQ commQ = new CommQ();
@@ -178,7 +179,6 @@ class QandaApplicationTests {
         LabQ labQById = labQuestionMapper.findLabQById(1);
         labQById.setSub_time("2018");
         labQuestionMapper.updateLabQ(labQById);
-
-
     }
+
 }
