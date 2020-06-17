@@ -54,4 +54,9 @@ public class StuCon {
         return stuService.updateStuPwd(stu.getStu_id(), stu.getPwd());
     }
 
+    @PostMapping("/login")
+    public Result stuLogin(@RequestBody Student stu){
+        return stuService.stuLogin(stu);
+    }
+
 }

@@ -18,6 +18,9 @@ POST http://localhost/stu/update
 ###  {"stu_id":int,"pwd":""}
 POST http://localhost/stu/updatePwd
 
+###  {"stu_id":"","pwd":""}
+POST http://localhost/stu/updatePwd
+
 ###
 ###   tch
 ###
@@ -37,6 +40,9 @@ POST http://localhost/tch/update
 
 ###  {"tch_id":int,"pwd":""}
 POST http://localhost/tch/updateTchPwd
+
+###  {"tch_id":"","pwd":""}
+POST http://localhost/tch/login
 
 ###
      commq
@@ -88,3 +94,4 @@ POST http://localhost/labq/updateText
 
 ###  {"id":"","answer":""}
 POST http://localhost/labq/updateAnswer
+

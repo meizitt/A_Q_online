@@ -1,6 +1,7 @@
 package com.perc.qanda.service;
 
 import com.perc.qanda.bean.Result;
+import com.perc.qanda.bean.Student;
 import com.perc.qanda.bean.Teacher;
 import com.perc.qanda.mappers.TchMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,21 @@ public class TchService {
         if (i == 1) {
             res.setRes("success");
         } else {
+            res.setRes("failed");
+        }
+        return res;
+    }
+
+    public Result tchLogin(Teacher tch) {
+        Teacher teacher = tchMapper.findTchById(tch.getTch_id());
+        if(teacher != null){
+            if(tch.getPwd().equals(teacher.getPwd())){
+                res.setRes("success");
+                return res;
+            }else {
+                res.setRes("failed");
+            }
+        }else {
             res.setRes("failed");
         }
         return res;

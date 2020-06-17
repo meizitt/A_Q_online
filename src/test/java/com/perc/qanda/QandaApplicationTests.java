@@ -7,6 +7,7 @@ import com.perc.qanda.mappers.StuMapper;
 import com.perc.qanda.mappers.TchMapper;
 import com.perc.qanda.service.LabQService;
 import com.perc.qanda.service.StuService;
+import com.perc.qanda.service.TchService;
 import com.perc.qanda.utils.CurrentTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -215,5 +216,27 @@ class QandaApplicationTests {
         labQ.setQ_text("齐次线性微分方程");
 
         labQService.addLabQ(labQ);
+    }
+
+    @Test
+    void stuLogin(){
+        Student student=new Student();
+        student.setStu_id(0);
+        student.setPwd("444");
+        Result result = stuService.stuLogin(student);
+        System.out.println(result.toString());
+
+    }
+
+    @Autowired
+    TchService tchService;
+
+    @Test
+    void tchLogin(){
+        Teacher tch=new Teacher();
+        tch.setPwd("13");
+        tch.setTch_id(3);
+        Result result = tchService.tchLogin(tch);
+        System.out.println(result.toString());
     }
 }

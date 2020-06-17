@@ -2,6 +2,7 @@ package com.perc.qanda.controller;
 
 
 import com.perc.qanda.bean.Result;
+import com.perc.qanda.bean.Student;
 import com.perc.qanda.bean.Teacher;
 import com.perc.qanda.service.TchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,11 @@ public class TchCon {
     @PostMapping("/updatePwd")
     public Result updateTchPwd(@RequestBody Teacher tch){
         return tchService.updateTchPwd(tch.getTch_id(),tch.getPwd());
+    }
+
+    @PostMapping("/login")
+    public Result tchLogin(@RequestBody Teacher tch){
+        return tchService.tchLogin(tch);
     }
 
 }

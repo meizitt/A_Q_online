@@ -71,4 +71,19 @@ public class StuService {
         }
         return res;
     }
+
+    public Result stuLogin(Student stu) {
+        Student student = stuMapper.findStuById(stu.getStu_id());
+        if(student != null){
+            if(stu.getPwd().equals(student.getPwd())){
+                res.setRes("success");
+                return res;
+            }else {
+                res.setRes("failed");
+            }
+        }else {
+            res.setRes("failed");
+        }
+        return res;
+    }
 }
