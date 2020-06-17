@@ -15,7 +15,7 @@ POST http://localhost/stu/add
 ###
 POST http://localhost/stu/update
 
-###
+###  {"stu_id":int,"pwd":""}
 POST http://localhost/stu/updatePwd
 
 ###
@@ -35,5 +35,56 @@ POST http://localhost/tch/add
 ###
 POST http://localhost/tch/update
 
-###
+###  {"tch_id":int,"pwd":""}
 POST http://localhost/tch/updateTchPwd
+
+###
+     commq
+###
+GET http://localhost/commq/findAll
+
+###
+GET http://localhost/commq/{{id}}
+
+###  {"text":""}
+GET http://localhost/commq/findByText
+
+###
+GET http://localhost/commq/del/{{id}}
+
+###
+POST http://localhost/commq/add
+
+###  {"id":"","text":""}
+POST http://localhost/commq/updateText
+
+###  {"id":"","answer":""}
+POST http://localhost/commq/updateAnswer
+
+###
+POST http://localhost/commq/update
+
+###
+###  labq
+###
+
+###
+GET http://localhost/labq/findAll
+
+###
+GET http://localhost/labq/{{id}}
+
+###  {"text":""}
+GET http://localhost/labq/findByText
+
+###
+GET http://localhost/labq/del/{{id}}
+
+###
+POST http://localhost/labq/add
+
+###  {"id":"","text":""}
+POST http://localhost/labq/updateText
+
+###  {"id":"","answer":""}
+POST http://localhost/labq/updateAnswer

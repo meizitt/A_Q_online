@@ -3,15 +3,19 @@ package com.perc.qanda.service;
 import com.perc.qanda.bean.LabQ;
 import com.perc.qanda.bean.Result;
 import com.perc.qanda.mappers.LabQuestionMapper;
+import com.perc.qanda.utils.CurrentTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class LabQService {
 
     LabQuestionMapper labQuestionMapper;
+    CurrentTime currentTime=new CurrentTime();
 
     @Autowired
 
@@ -45,6 +49,10 @@ public class LabQService {
 
 
     public Result addLabQ(LabQ labQ) {
+
+        String time = this.currentTime.getCurrentTime();
+        labQ.setSub_time(time);
+        System.out.println(time);
         int i = labQuestionMapper.addLabQ(labQ);
         if (i == 1) {
             res.setRes("success");
@@ -80,12 +88,15 @@ public class LabQService {
         return res;
     }
 
-    public Result updateAnswer(Integer id, String answer, String time) {
+    public Result updateAnswer(Integer id, String answer) {
         LabQ labQ = labQuestionMapper.findLabQById(id);
         if (labQ != null) {
             labQ.setAnswer_text(answer);
-            labQ.setSub_time(time);
-            int i = labQuestionMapper.updateLabQ(labQ);
+            String time = this.currentTime.getCurrentTime();
+            labQ.setAnswer_time(time);
+
+
+            int i = labQuestionMapper.updateAnswer(labQ);
             if (i == 1) {
                 res.setRes("success");
             } else {

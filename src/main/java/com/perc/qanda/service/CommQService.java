@@ -31,10 +31,10 @@ public class CommQService {
     public List<CommQ> findCommQByText(String text) {
 
         List<CommQ> commQList = commQuestionMapper.findCommQText(text);
-
         if(commQList != null){
             for (CommQ commQ : commQList) {
                 commQ.setNum(commQ.getNum()+1);
+                commQuestionMapper.updateCommQNum(commQ.getQ_id(),commQ.getNum());
             }
         }
         return commQList;

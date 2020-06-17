@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface CommQuestionMapper {
 
-    @Insert("insert into comm_q(q_id,text,time,num,answer) " +
-            "values(#{q_id},#{text},#{time},#{num},#{answer})")
+    @Insert("insert into comm_q(q_id,text,time,answer) " +
+            "values(#{q_id},#{text},#{time},#{answer})")
     int addCommQ(CommQ commQ);
 
     @Delete("delete from comm_q where q_id=#{id}")
@@ -28,7 +28,7 @@ public interface CommQuestionMapper {
     @Select("select * from comm_q")
     List<CommQ> findAllCommQ();
 
-    @Update("update comm_q set text=#{text},answer=#{answer},time=#{time},num=#{num} " +
+    @Update("update comm_q set text=#{text},answer=#{answer},time=#{time} " +
             "where q_id=#{q_id}")
     int updateCommQ(CommQ commQ);
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/commq")
@@ -29,9 +30,10 @@ public class CommQCon {
         return commQService.findCommQById(id);
     }
 
-    @GetMapping("/findByText/{text}")
-    public List<CommQ> findCommQByText(@PathVariable String text){
-        return commQService.findCommQByText(text);
+    @GetMapping("/findByText")
+    public List<CommQ> findCommQByText(@RequestBody Map<String,String> text){
+
+        return commQService.findCommQByText(text.get("text"));
     }
 
     @GetMapping("/del/{id}")
@@ -49,13 +51,13 @@ public class CommQCon {
         return commQService.updateCommQ(commQ);
     }
 
-    @PostMapping("/updateText/{id}/{text}")
-    public Result updateText(@PathVariable Integer id,@PathVariable String text){
-        return commQService.updateText(id,text);
+    @PostMapping("/updateText")
+    public Result updateText(@RequestBody Map<String,String> x){
+        return commQService.updateText(Integer.parseInt(x.get("id")),x.get("text"));
     }
 
-    @PostMapping("/updateAnswer/{id}/{answer}")
-    public Result updateAnswer(@PathVariable Integer id,@PathVariable String answer){
-        return commQService.updateAnswer(id,answer);
+    @PostMapping("/updateAnswer")
+    public Result updateAnswer(@RequestBody Map<String,String> x){
+        return commQService.updateAnswer(Integer.parseInt(x.get("id")),x.get("answer"));
     }
 }

@@ -28,7 +28,10 @@ public interface LabQuestionMapper {
     int addLabQ(LabQ labQ);
 
     @Update("update lab_q set stu_id=#{stu_id},stu_name=#{stu_name},tch_id=#{tch_id},tch_name=#{tch_name}," +
-            "sub_time=#{sub_time},answer_time=#{answer_time},q_text=#{q_text},answer_text=#{answer_text} " +
+            "q_text=#{q_text},answer_text=#{answer_text} " +
             "where q_id=#{q_id}")
     int updateLabQ(LabQ labQ);
+
+    @Update("update lab_q set answer_time=#{answer_time},answer_text=#{answer_text} where q_id=#{q_id}")
+    int updateAnswer(LabQ labQ);
 }

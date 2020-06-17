@@ -5,11 +5,15 @@ import com.perc.qanda.mappers.CommQuestionMapper;
 import com.perc.qanda.mappers.LabQuestionMapper;
 import com.perc.qanda.mappers.StuMapper;
 import com.perc.qanda.mappers.TchMapper;
+import com.perc.qanda.service.LabQService;
 import com.perc.qanda.service.StuService;
+import com.perc.qanda.utils.CurrentTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import sun.security.util.Length;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +36,9 @@ class QandaApplicationTests {
 
     @Autowired
     StuService stuService;
+
+    @Autowired
+    LabQService labQService;
 
     @Test
     void contextLoads() {
@@ -147,7 +154,8 @@ class QandaApplicationTests {
     @Test
     void addLabQ(){
         LabQ labQ=new LabQ();
-        labQ.setQ_text("罗尔定理证明不等式");
+        labQ.setQ_text("拉格朗日不等式");
+        labQ.setAnswer_time("adf");
         labQuestionMapper.addLabQ(labQ);
     }
 
@@ -186,5 +194,26 @@ class QandaApplicationTests {
 
         commQuestionMapper.updateCommQNum(2,1);
 
+    }
+
+    @Test
+    void getCurrentTime(){
+        CurrentTime currentTime= new CurrentTime();
+
+        System.out.println(currentTime.getCurrentTime().length());
+    }
+
+    @Test
+    void updateLabQAnswer(){
+        Result result = labQService.updateAnswer(4, "求反函数");
+        System.out.println(result);
+    }
+
+    @Test
+    void labSer(){
+        LabQ labQ=new LabQ();
+        labQ.setQ_text("齐次线性微分方程");
+
+        labQService.addLabQ(labQ);
     }
 }

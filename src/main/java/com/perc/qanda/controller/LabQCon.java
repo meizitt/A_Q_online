@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/labq")
@@ -20,42 +21,43 @@ public class LabQCon {
     }
 
     @GetMapping("/findAll")
-    public List<LabQ> findAll(){
+    public List<LabQ> findAll() {
         return labQService.findALl();
     }
 
     @GetMapping("/{id}")
-    public LabQ findLabQById(@PathVariable Integer id){
+    public LabQ findLabQById(@PathVariable Integer id) {
         return labQService.findById(id);
     }
 
-    @GetMapping("/findByText/{text}")
-    public List<LabQ> findLabQByText(@PathVariable String text){
-        return labQService.findByText(text);
+    @GetMapping("/findByText")
+    public List<LabQ> findLabQByText(@RequestBody Map<String, String> x) {
+
+        return labQService.findByText(x.get("text"));
     }
 
     @GetMapping("/del/{id}")
-    public Result delLabQById(@PathVariable Integer id){
+    public Result delLabQById(@PathVariable Integer id) {
         return labQService.delLabQById(id);
     }
 
     @PostMapping("/add")
-    public Result addLabQ(@RequestBody LabQ labQ){
+    public Result addLabQ(@RequestBody LabQ labQ) {
         return labQService.addLabQ(labQ);
     }
 
     @PostMapping("/update")
-    public Result updateLabQById(@RequestBody LabQ labQ){
+    public Result updateLabQById(@RequestBody LabQ labQ) {
         return labQService.updateLabQ(labQ);
     }
 
-    @PostMapping("/updateTex/{id}/{text}")
-    public Result updateLabQText(@PathVariable Integer id,@PathVariable String text){
-        return labQService.updateLabQText(id,text);
+    @PostMapping("/updateText")
+    public Result updateLabQText(@RequestBody Map<String, String> x) {
+        return labQService.updateLabQText(Integer.parseInt(x.get("id")), x.get("text"));
     }
 
-    @PostMapping("/updateAnswer/{id}/{answer}/{time}")
-    public Result updateLabQAnswer(@PathVariable Integer id,@PathVariable String answer,@PathVariable String time){
-        return labQService.updateAnswer(id,answer,time);
+    @PostMapping("/updateAnswer")
+    public Result updateLabQAnswer(@RequestBody Map<String, String> x) {
+        return labQService.updateAnswer(Integer.parseInt(x.get("id")), x.get("answer"));
     }
 }
