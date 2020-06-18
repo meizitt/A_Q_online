@@ -30,10 +30,10 @@ public class CommQCon {
         return commQService.findCommQById(id);
     }
 
-    @GetMapping("/findByText")
-    public List<CommQ> findCommQByText(@RequestBody Map<String,String> text){
+    @GetMapping("/findByText/{txtt}")
+    public List<CommQ> findCommQByText(@PathVariable String txtt){
 
-        return commQService.findCommQByText(text.get("text"));
+        return commQService.findCommQByText(txtt);
     }
 
     @GetMapping("/del/{id}")

@@ -30,10 +30,9 @@ public class LabQCon {
         return labQService.findById(id);
     }
 
-    @GetMapping("/findByText")
-    public List<LabQ> findLabQByText(@RequestBody Map<String, String> x) {
-
-        return labQService.findByText(x.get("text"));
+    @GetMapping("/findByText/{txt}")
+    public List<LabQ> findLabQByText(@PathVariable String txt) {
+        return labQService.findByText(txt);
     }
 
     @GetMapping("/del/{id}")
@@ -57,7 +56,8 @@ public class LabQCon {
     }
 
     @PostMapping("/updateAnswer")
-    public Result updateLabQAnswer(@RequestBody Map<String, String> x) {
-        return labQService.updateAnswer(Integer.parseInt(x.get("id")), x.get("answer"));
+    public Result updateLabQAnswer(@RequestBody LabQ labQ) {
+        System.out.println(labQ);
+        return labQService.updateAnswer(labQ.getQ_id(),labQ.getAnswer_text());
     }
 }

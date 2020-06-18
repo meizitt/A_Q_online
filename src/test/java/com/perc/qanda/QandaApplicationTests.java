@@ -239,4 +239,9 @@ class QandaApplicationTests {
         Result result = tchService.tchLogin(tch);
         System.out.println(result.toString());
     }
+    @Test
+    void byText(){
+        System.out.println(labQService.findByText("拉"));
+
+    }
 }
